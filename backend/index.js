@@ -1,4 +1,3 @@
-// backend/index.js
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
@@ -17,7 +16,6 @@ let players = {};
 io.on('connection', async (socket) => {
     console.log(`Player connected: ${socket.id}`);
     
-    // Adiciona novo jogador ao Supabase
     let { data: player, error } = await supabase
         .from('players')
         .insert([{ id: socket.id, x: Math.floor(Math.random() * 500), y: Math.floor(Math.random() * 500) }])
