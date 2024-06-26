@@ -13,6 +13,13 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let players = {};
 
+// Serve the frontend files
+app.use(express.static('frontend'));
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/frontend/index.html');
+});
+
 io.on('connection', async (socket) => {
     console.log(`Player connected: ${socket.id}`);
     
