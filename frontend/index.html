@@ -1,18 +1,24 @@
-<!-- frontend/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto X - Jogo 3D Multiplayer</title>
-    <style>
-        body { margin: 0; overflow: hidden; }
-        canvas { display: block; }
-    </style>
+    <title>Projeto X - Tela Inicial</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
-    <script src="game.js"></script>
+    <div class="container">
+        <h1>Bem-vindo ao Projeto X</h1>
+        <div class="player-info">
+            <p><strong>Nome do Jogador:</strong> <span id="playerName">Player1</span></p>
+            <p><strong>Saldo em Gold:</strong> <span id="goldBalance">100</span></p>
+            <p><strong>Dano Causado:</strong> <span id="damageDealt">0</span></p>
+            <p><strong>Defesa Realizada:</strong> <span id="defensePerformed">0</span></p>
+            <p><strong>Cura Concedida:</strong> <span id="healingProvided">0</span></p>
+        </div>
+        <button id="startGameBtn">Iniciar Partida</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
