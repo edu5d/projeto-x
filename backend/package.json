@@ -1,0 +1,13 @@
+{
+  "name": "projeto-x-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.0.1",
+    "@supabase/supabase-js": "^1.29.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
