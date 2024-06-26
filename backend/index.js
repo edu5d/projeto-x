@@ -2,22 +2,23 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const { createClient } = require('@supabase/supabase-js');
+const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-const SUPABASE_URL = 'https://your-supabase-url';
-const SUPABASE_KEY = 'your-supabase-key';
+const SUPABASE_URL = 'https://htuzeeiqjyrgdxvwrfuu.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0dXplZWlxanlyZ2R4dndyZnV1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTkzNjU2MDUsImV4cCI6MjAzNDk0MTYwNX0.Vv1375LUthj9_eAFW2_rx9KTzFo2sbDFib8LtH97NxA';
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let players = {};
 
 // Serve the frontend files
-app.use(express.static('frontend'));
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/frontend/index.html');
+    res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
 });
 
 io.on('connection', async (socket) => {
@@ -56,6 +57,7 @@ io.on('connection', async (socket) => {
     });
 });
 
-server.listen(3000, () => {
-    console.log('Listening on port 3000');
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
 });
